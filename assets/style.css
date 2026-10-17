@@ -81,11 +81,11 @@ img { max-width: 100%; display: block; }
 
 /* Corrigés */
 .liste-corriges { display: grid; gap: 10px; }
-.corrige { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; padding: 14px 16px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; color: var(--encre); }
+.corrige { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 14px; align-items: center; padding: 14px 16px; background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; color: var(--encre); }
 .corrige:hover { border-color: var(--accent); }
-.corrige-titre { font-weight: 700; }
-.corrige-meta { grid-column: 1; display: flex; gap: 10px; align-items: center; color: var(--doux); font-size: .85rem; }
-.corrige-cta { grid-row: 1 / span 2; grid-column: 2; color: var(--accent); font-weight: 700; white-space: nowrap; }
+.corrige-titre { grid-column: 2; font-weight: 700; }
+.corrige-meta { grid-column: 2; display: flex; gap: 10px; align-items: center; color: var(--doux); font-size: .85rem; }
+.corrige-cta { grid-row: 1 / span 2; grid-column: 3; color: var(--accent); font-weight: 700; white-space: nowrap; }
 .badge { padding: 0 10px; border-radius: 999px; color: #fff; font-size: .8rem; font-weight: 600; }
 .badge-bleu { background: var(--accent); } .badge-vert { background: var(--valid); }
 .serie { margin-top: 24px; scroll-margin-top: 80px; }
@@ -96,6 +96,14 @@ img { max-width: 100%; display: block; }
 .index-series { margin: 8px 0 4px; }
 .chip { display: inline-block; border: 1px solid var(--bord); background: var(--carte); color: var(--encre); border-radius: 999px; padding: 4px 16px; font: inherit; font-weight: 600; cursor: pointer; }
 .chip.actif, .index-series .chip:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Vignettes et étiquettes de type */
+.vignette { position: relative; grid-row: 1 / span 2; grid-column: 1; width: 68px; height: 96px; border-radius: 8px; overflow: hidden; border: 1px solid var(--bord); background: #fff; display: grid; place-items: center; }
+.vignette::before { content: "PDF"; position: absolute; color: #d93025; font-weight: 800; font-size: 1.1rem; opacity: .35; }
+.vignette img { position: relative; width: 100%; height: 100%; object-fit: cover; object-position: top; background: #fff; }
+.type-tag { position: absolute; padding: 0 8px; border-radius: 6px; color: #fff; font-size: .72rem; font-weight: 800; line-height: 1.6; }
+.type-pdf { inset-inline-start: 0; bottom: 0; border-radius: 0 6px 0 0; background: #d93025; }
+.type-video { inset-inline-start: 8px; top: 8px; background: rgba(15, 61, 122, .92); }
 
 /* Fil d'actualité */
 .fil { display: grid; gap: 12px; }
@@ -121,6 +129,7 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 560px) {
   .menu a { padding: 4px 10px; font-size: .88rem; }
-  .corrige { grid-template-columns: 1fr; }
-  .corrige-cta { grid-row: auto; grid-column: 1; }
+  .corrige { grid-template-columns: auto 1fr; }
+  .corrige-cta { grid-row: auto; grid-column: 2; }
+  .vignette { width: 56px; height: 78px; }
 }
