@@ -14,7 +14,7 @@ document.addEventListener('click', function (e) {
 (function () {
   var racine = document.querySelector('[data-filtres]');
   if (!racine) return;
-  var etat = { type: '', filiere: '' };
+  var etat = { filiere: '' };
   function appliquer() {
     var total = 0;
     document.querySelectorAll('[data-serie]').forEach(function (serie) {
@@ -22,14 +22,11 @@ document.addEventListener('click', function (e) {
       serie.querySelectorAll('.liste-corriges').forEach(function (liste) {
         var n = 0;
         liste.querySelectorAll('.corrige').forEach(function (c) {
-          var ok = (!etat.type || c.dataset.type === etat.type) &&
-                   (!etat.filiere || c.dataset.filieres.split(' ').indexOf(etat.filiere) >= 0);
+          var ok = (!etat.filiere || c.dataset.filieres.split(' ').indexOf(etat.filiere) >= 0);
           c.hidden = !ok;
           if (ok) n++;
         });
         liste.hidden = n === 0;
-        var titre = liste.previousElementSibling;
-        if (titre && titre.classList.contains('sous-titre')) titre.hidden = n === 0;
         visibles += n;
       });
       serie.hidden = visibles === 0;
